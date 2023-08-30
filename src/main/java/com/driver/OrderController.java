@@ -104,6 +104,7 @@ public class OrderController {
         Integer countOfOrders = 0;
 
         //countOfOrders that are left after a particular time of a DeliveryPartner
+        countOfOrders = orderService.getOrdersLeftAfterGivenTimeByPartnerId(time, partnerId);
 
         return new ResponseEntity<>(countOfOrders, HttpStatus.CREATED);
     }
@@ -113,6 +114,7 @@ public class OrderController {
         String time = null;
 
         //Return the time when that partnerId will deliver his last delivery order.
+        time = orderService.getLastDeliveryTimeByPartnerId(partnerId);
 
         return new ResponseEntity<>(time, HttpStatus.CREATED);
     }
@@ -122,7 +124,7 @@ public class OrderController {
 
         //Delete the partnerId
         //And push all his assigned orders to unassigned orders.
-
+        orderService.deletePartnerById(partnerId);
         return new ResponseEntity<>(partnerId + " removed successfully", HttpStatus.CREATED);
     }
 
@@ -131,7 +133,7 @@ public class OrderController {
 
         //Delete an order and also
         // remove it from the assigned order of that partnerId
-
+        orderService.deleteOrderById(orderId);
         return new ResponseEntity<>(orderId + " removed successfully", HttpStatus.CREATED);
     }
 }
