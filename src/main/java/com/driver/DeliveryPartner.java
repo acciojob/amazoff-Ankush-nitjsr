@@ -21,4 +21,15 @@ public class DeliveryPartner {
     public void setNumberOfOrders(Integer numberOfOrders) {
         this.numberOfOrders = numberOfOrders;
     }
+
+
+    //Why its done, need to find out
+    @Override
+    public String toString() {
+        return "DeliveryPartner{" +
+                "id='" + id + '\'' +
+                ", numberOfOrders=" + numberOfOrders +
+                '}';
+    }
+
 }
